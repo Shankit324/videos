@@ -13,14 +13,13 @@ export default function Form() {
             const url: any = URL.createObjectURL(file);
             setVideoSrc(url);
             const newitem = document.createElement('div');
-            newitem.innerHTML = `<div className="px-5 py-5 my-5 w-auto h-auto"><video controls width="600">
+            newitem.innerHTML = `<div style="width: auto; height: auto; margin: 5px 0 5px 0"><video  style={{padding: "5px 5px 5px 5px", width: "90%", height: "90%" }} controls width="600">
                                 <source src="${url}" type="${file.type}" />
                                 Your browser does not support the video tag.
                             </video>
-                            <p style={{fontWeight: 500, color: "black"}}>${file.name}</p></div>`;
+                            <h5 style="font-weight: 700; padding: 0 5px 0 5px">${file.name}</h5></div>`;
             newitem.style.backgroundColor = 'lightgray';
             newitem.style.borderRadius = "5px";
-            newitem.style.textColor = "black";
             document.getElementById("videos")?.appendChild(newitem);
         }
     };
@@ -46,4 +45,3 @@ export default function Form() {
             </div>
         </div>
     )
-}
