@@ -13,11 +13,11 @@ export default function Form() {
             const url: any = URL.createObjectURL(file);
             setVideoSrc(url);
             const newitem = document.createElement('div');
-            newitem.innerHTML = `<div class="bg-lime-400 px-5 py-5 my-5 w-auto h-auto"><video controls width="600">
+            newitem.innerHTML = `<div class="px-5 py-5 my-5 w-auto h-auto"><video controls width="600">
                                 <source src="${url}" type="${file.type}" />
                                 Your browser does not support the video tag.
                             </video>
-                            <h5 class="text-xl text-green-800 font-bold">${file.name}</h5></div>`;
+                            <h5>${file.name}</h5></div>`;
             newitem.style.backgroundColor = 'lightgray';
             newitem.style.borderRadius = "5px";
             newitem.style.textColor = "black";
