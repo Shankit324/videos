@@ -17,9 +17,10 @@ export default function Form() {
                                 <source src="${url}" type="${file.type}" />
                                 Your browser does not support the video tag.
                             </video>
-                            <h1 class="text-3xl text-green-800 font-bold">${file.name}</h1></div>`;
+                            <h1 class="text-xl text-green-800 font-bold">${file.name}</h1></div>`;
             newitem.style.backgroundColor = 'lightgray';
             newitem.style.borderRadius = "5px";
+            newitem.style.textColor = "black";
             document.getElementById("videos")?.appendChild(newitem);
         }
     };
