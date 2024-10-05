@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
+import '@/app/globals.css';
 
 export default function Form() {
     const [videoSrc, setVideoSrc] = useState(null);
@@ -13,11 +14,11 @@ export default function Form() {
             const url: any = URL.createObjectURL(file);
             setVideoSrc(url);
             const newitem = document.createElement('div');
-            newitem.innerHTML = `<div style="width: auto; height: auto; margin: 5px 0 5px 0; overflow-x: hidden"><video  style={{padding: "5px 5px 5px 5px", width: "90%", height: "90%" }} controls width="600">
-                                <source src="${url}" type="${file.type}" />
-                                Your browser does not support the video tag.
-                            </video>
-                            <h5 style="font-weight: 700; padding: 0 5px 0 5px">${file.name}</h5></div>`;
+            newitem.innerHTML = `<div style="margin: 5px 0 5px 0"><video width="600">
+            <source src="${url}" type="${file.type}" />
+            Your browser does not support the video tag.
+            </video>
+            <h5 style="font-weight: 700; padding: 0 5px 0 5px">${file.name}</h5></div>`;
             newitem.style.backgroundColor = 'lightgray';
             newitem.style.borderRadius = "5px";
             document.getElementById("videos")?.appendChild(newitem);
@@ -37,7 +38,7 @@ export default function Form() {
                             <label htmlFor="description" className="text-sm font-medium absolute text-gray-700 -top-4 left-2 bg-white px-2">
                                 Video File
                             </label>
-                            <input type="file" accept="video/*" onChange={handleFileChange} className="block w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-lime-400 file:text-green-800 hover:file:bg-lime-500"/>
+                            <input type="file" accept="video/*" onChange={handleFileChange} className="block w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-lime-400 file:text-green-800 hover:file:bg-lime-500" />
                             <div id="videos"></div>
                         </div>
                     </form>
@@ -45,3 +46,4 @@ export default function Form() {
             </div>
         </div>
     )
+}
