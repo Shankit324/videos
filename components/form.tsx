@@ -3,42 +3,29 @@
 import React, { useState } from 'react';
 
 export default function Form() {
-    const [title, setTitle] = useState<string>('');
-    const [description, setDescription] = useState<string>('');
-    const [Path, setPath] = useState<string>('');
+    const [videoSrc, setVideoSrc] = useState(null);
+    const [file, setFile] = useState(null);
 
-    type Video = {
-        title: string,
-        description: string,
-        Path: string
-    };
-
-    const convertToBase64 = () => {
-        let x = localStorage.getItem("Lib") as string;
-        let y: Video[] = JSON.parse(x);
-        if (y) {
-            y.push({
-                title: title as string,
-                description: description as string,
-                Path: Path as string,
-            })
-            localStorage.setItem("Lib", JSON.stringify(y));
-        }
-        else {
-            let z = [];
-            z.push({
-                title: title as string,
-                description: description as string,
-                Path: Path as string,
-            })
-            localStorage.setItem("Lib", JSON.stringify(z));
+    const handleFileChange = (event: any) => {
+        const file = event.target.files[0];
+        setFile(file);
+        if (file) {
+            const url: any = URL.createObjectURL(file);
+            setVideoSrc(url);
+            const newitem = document.createElement('div');
+            newitem.innerHTML = `<div class="bg-lime-400 px-5 py-5 my-5 w-auto h-auto"><video controls width="600">
+                                <source src="${url}" type="${file.type}" />
+                                Your browser does not support the video tag.
+                            </video>
+                            <h1 class="text-3xl text-green-800 font-bold">${file.name}</h1></div>`;
+            newitem.style.backgroundColor = 'lightgray';
+            newitem.style.borderRadius = "5px";
+            document.getElementById("videos")?.appendChild(newitem);
         }
     };
 
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-        convertToBase64();
-        window.location.href = '/';
     };
     return (
         <div>
@@ -47,51 +34,12 @@ export default function Form() {
                     <h2 className="text-2xl font-bold mb-6 text-gray-800 text-center">Upload Your Video</h2>
                     <form onSubmit={handleSubmit} className="space-y-6">
                         <div className="relative">
-                            <label htmlFor="title" className="text-sm font-medium text-gray-700 absolute -top-4 left-2 bg-white px-2">
-                                Video Title
-                            </label>
-                            <input
-                                type="text"
-                                id="title"
-                                name="title"
-                                onChange={(e) => setTitle(e.target.value)}
-                                required
-                                className="w-full border border-gray-300 rounded-lg p-4 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-transparent"
-                                placeholder="Enter the video title"
-                            />
-                        </div>
-                        <div className="relative">
                             <label htmlFor="description" className="text-sm font-medium absolute text-gray-700 -top-4 left-2 bg-white px-2">
-                                Video Description
+                                Video File
                             </label>
-                            <textarea
-                                id="description"
-                                name="description"
-                                onChange={(e) => setDescription(e.target.value)}
-                                required
-                                className="w-full border border-gray-300 rounded-lg p-4 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-transparent"
-                                placeholder="Enter a brief description"
-                            />
+                            <input type="file" accept="video/*" onChange={handleFileChange} className="block w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-lime-400 file:text-green-800 hover:file:bg-lime-500"/>
+                            <div id="videos"></div>
                         </div>
-                        <div className="relative">
-                            <label htmlFor="description" className="text-sm font-medium absolute text-gray-700 -top-4 left-2 bg-white px-2">
-                                URL
-                            </label>
-                            <input
-                                id="path"
-                                name="path"
-                                onChange={(e) => setPath(e.target.value)}
-                                required
-                                className="w-full border border-gray-300 rounded-lg p-4 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-transparent"
-                                placeholder="Enter the path of the file"
-                            />
-                        </div>
-                        <button
-                            type="submit"
-                            className="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 rounded-lg transition-all duration-300 ease-in-out"
-                        >
-                            Upload Video
-                        </button>
                     </form>
                 </div>
             </div>
