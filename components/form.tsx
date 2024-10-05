@@ -17,7 +17,7 @@ export default function Form() {
                                 <source src="${url}" type="${file.type}" />
                                 Your browser does not support the video tag.
                             </video>
-                            <p className="text-xl font-bold">${file.name}</p></div>`;
+                            <p style={{fontWeight: 500, color: "black"}}>${file.name}</p></div>`;
             newitem.style.backgroundColor = 'lightgray';
             newitem.style.borderRadius = "5px";
             newitem.style.textColor = "black";
