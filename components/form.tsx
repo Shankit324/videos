@@ -15,7 +15,7 @@ export default function Form() {
             setVideoSrc(url);
             const newitem = document.createElement('div');
             newitem.innerHTML = `<div class="box" style="margin: 5px 0;">
-  <div class="container" style="position: relative; width: auto; display: block; cursor: pointer; display: flex; align-items: center">
+  <div class="container" style="position: relative; width: auto; display: block; cursor: pointer; display: flex; align-items: center; bottom: 0">
     <div class='timeline' style="position: absolute; width: 100%; height: 10px; background-color: #ccc; cursor: pointer; bottom: 30px; opacity: 0; z-index: 50">
   <!-- Background of the timeline -->
   <div class='progress' style="position: absolute; top: 0; left: 0; height: 100%; width: 50%; background-color: #007bff;">
@@ -212,8 +212,8 @@ export default function Form() {
                 else if (q.style.display == 'none') {
                     p.style.display = 'none';
                     q.style.display = 'block';
-                    vc.style.height = `${(8 / 10) * window.innerHeight}px`;
-                    vc.style.width = `${window.innerWidth}px`;
+                    vc.style.height = `${(5 / 10) * window.innerHeight}px`;
+                    vc.style.width = `${(5 / 10) * window.innerWidth}px`;
                     vc.style.position = 'fixed';
                     vc.style.top = '0';
                     vc.style.left = '0';
