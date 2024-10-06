@@ -212,7 +212,7 @@ export default function Form() {
                 else if (q.style.display == 'none') {
                     p.style.display = 'none';
                     q.style.display = 'block';
-                    vc.style.height = `${(5 / 10) * window.innerHeight}px`;
+                    vc.style.height = 'auto';
                     vc.style.width = `${(5 / 10) * window.innerWidth}px`;
                     vc.style.position = 'fixed';
                     vc.style.top = '0';
