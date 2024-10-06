@@ -90,7 +90,7 @@ export default function Form() {
     </div>
 
     <!-- Video Element -->
-    <video class="video" style="width: 100%; display: block;">
+    <video class="video" style="width: 100%; display: block; height: auto; overflow-y: hidden; overflow-x: hidden">
       <source src="${url}" type="${file.type}" />
       Your browser does not support the video tag.
     </video>
